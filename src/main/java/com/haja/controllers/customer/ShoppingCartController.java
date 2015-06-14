@@ -2,17 +2,15 @@ package com.haja.controllers.customer;
 
 import com.haja.models.Order;
 import com.haja.models.OrderRepository;
-import com.haja.models.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 /**
  * Created by alessio on 04/06/15.
@@ -20,20 +18,24 @@ import javax.servlet.http.HttpSession;
  * Package: com.haja.controllers.customer
  */
 
+//@SessionAttributes("order")
 @Controller
 @RequestMapping(value = "/cart")
-//@SessionAttributes({"order"})
 public class ShoppingCartController {
 
+/*
     @Autowired
     private OrderRepository orderRepository;
 
 
-    /*
-    @RequestMapping(value = "/add2Session", method = RequestMethod.GET)
-    public String add2Session(HttpServletRequest request){
-        Order order = (Order)request.getSession().setAttribute("order", );
-        return "redirect:/order";
+
+    @RequestMapping(value = "/addOrder", method = RequestMethod.GET)
+    public String addOrder(@ModelAttribute("user") Order order, BindingResult result){
+        if (result.hasErrors()){
+            return "orderViews/index";
+        }
+        orderRepository.save(order);
+        return "/cart";
     }
-    */
+*/
 }

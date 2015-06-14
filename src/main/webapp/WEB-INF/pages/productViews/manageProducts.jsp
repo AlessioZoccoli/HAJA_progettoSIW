@@ -13,6 +13,11 @@
 <head>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<<<<<<< HEAD
+=======
+
+<t:general>
+>>>>>>> 47efa2dc6182f569ff2bd376c550b397a04c9bd4
 
 <t:general>
 

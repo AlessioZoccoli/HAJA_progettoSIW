@@ -11,6 +11,7 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
 <t:general>
   <jsp:attribute name="title">Catalogo Prodotti</jsp:attribute>
   <jsp:attribute name="yield">
@@ -54,3 +55,4 @@
     </jsp:attribute>
 
 </t:general>
+

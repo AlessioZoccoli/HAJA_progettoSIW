@@ -13,6 +13,7 @@ import java.util.List;
  * Package: com.haja.models
  */
 
+
 @Entity
 @Table(name = "orders")
 public class Order implements Serializable {
@@ -24,11 +25,10 @@ public class Order implements Serializable {
     @ManyToOne
     private User user;
 
-    @Basic
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="dd/MM/yyyy")
-    private Date creationDate;
+    private Date creationDate = new java.util.Date();
 
     @Basic
     @Column(nullable = false)
@@ -43,7 +43,6 @@ public class Order implements Serializable {
     private Date evasionDate;
 
     @OneToMany(cascade=CascadeType.ALL)
-    @JoinColumn(name = "orders_id")
     private List<OrderLine> orderLines;
 
 
@@ -78,9 +77,8 @@ public class Order implements Serializable {
     public void setClosingDate(Date closingDate) {
         this.closingDate = closingDate;
     }
-    public Date getEvasionDate() {
-        return evasionDate;
-    }
+
+    public Date getEvasionDate() {return evasionDate;}
 
     public void setEvasionDate(Date evasionDate) {
         this.evasionDate = evasionDate;

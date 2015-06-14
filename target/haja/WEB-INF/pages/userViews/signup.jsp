@@ -3,6 +3,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
 <t:general>
 
 
@@ -11,7 +15,7 @@
 
     <jsp:attribute name="yield">
 
-        <h1>Registrati! Sign up!</h1>
+        <h1>Registrati</h1>
 
         <form:form id="form-data" method="post" action="/signup" modelAttribute="user">
 
@@ -39,7 +43,7 @@
             <form:label path="address.address_line">Indirizzo:</form:label>
             <form:input path="address.address_line"/>
 
-            <form:label path="birthDate">Data di nascita:</form:label>
+            <form:label path="birthDate">Data di nascita: (dd/MM/yyyy)</form:label>
             <form:input path="birthDate"/>
 
             <input type="submit" value="registrati">

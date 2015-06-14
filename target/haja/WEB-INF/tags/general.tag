@@ -23,13 +23,30 @@
     <nav id="main-nav">
         <dl>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
+<<<<<<< HEAD
                 <dt><a href="/">HAJA</a></dt>
                 <dt><a href="/administrator/supplier">Fornitori</a></dt>
                 <dt><a href="/administrator/user">Utenti</a></dt>
                 <dt><a href="/administrator/orders">Ordini </a></dt>
                 <dt><a href="/administrator/product">Gestione Catalogo Prodotti</a></dt>
+=======
+>>>>>>> 47efa2dc6182f569ff2bd376c550b397a04c9bd4
 
+                <dt><a href="/">HAJA</a></dt>
+                <dt><a href="/administrator/supplier">Fornitori</a></dt>
+                <dt><a href="/administrator/user">Utenti</a></dt>
+                <dt><a href="/administrator/orders">Ordini </a></dt>
+                <dt><a href="/administrator/product">Prodotti</a></dt>
             </sec:authorize>
+<<<<<<< HEAD
+=======
+
+            <sec:authorize access="hasRole('ROLE_USER')">
+
+                <dt><a href="/cart"> Carrello </a></dt>
+            </sec:authorize>
+
+>>>>>>> 47efa2dc6182f569ff2bd376c550b397a04c9bd4
         </dl>
     </nav>
 

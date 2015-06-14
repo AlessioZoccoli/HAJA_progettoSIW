@@ -22,7 +22,7 @@ public class CatalogueController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String listProduct(ModelMap model) {
-        model.addAttribute("products", productRepository.findAvailableProducts());
+        model.addAttribute("products", productRepository.findAvailableProducts()); //namedQuery in Product
         return "productViews/index";
     }
 }

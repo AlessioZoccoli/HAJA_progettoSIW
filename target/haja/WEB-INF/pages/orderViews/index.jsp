@@ -10,6 +10,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<<<<<<< HEAD
 
 <t:general>
   <jsp:attribute name="title">Catalogo Prodotti</jsp:attribute>
@@ -54,3 +55,4 @@
     </jsp:attribute>
 
 </t:general>
+
