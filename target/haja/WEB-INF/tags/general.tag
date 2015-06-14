@@ -8,6 +8,8 @@
 <html>
 <head>
 
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
     <meta charset="utf-8">
     <title><jsp:invoke fragment="title"/></title>
 
@@ -19,30 +21,30 @@
 
 <body>
     <nav id="main-nav">
-        <ul>
+        <dl>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li><a href="/">HAJA</a></li>
-                <li><a href="/administrator/supplier">Fornitori</a></li>
-                <li><a href="/administrator/user">Utenti</a></li>
-                <li><a href="/administrator/orders">Ordini </a></li>
-                <li><a href="/administrator/product">Prodotti</a></li>
+                <dt><a href="/">HAJA</a></dt>
+                <dt><a href="/administrator/supplier">Fornitori</a></dt>
+                <dt><a href="/administrator/user">Utenti</a></dt>
+                <dt><a href="/administrator/orders">Ordini </a></dt>
+                <dt><a href="/administrator/product">Gestione Catalogo Prodotti</a></dt>
 
             </sec:authorize>
-        </ul>
+        </dl>
     </nav>
 
 
     <nav id="seconday-nav">
-        <ul>
-            <li><a title="registrati" href="/signup">registrati</a></li>
+        <dl>
+            <dt><a title="registrati" href="/signup">registrati</a></dt>
             <sec:authorize access="isAnonymous()">
-                <li><a title="login" href="/login">login</a></li>
+                <dt><a title="login" href="/login">login</a></dt>
             </sec:authorize>
 
             <sec:authorize access="isAuthenticated()">
-                <li><a href="/j_spring_security_logout">logout</a> </li>
+                <dt><a href="/j_spring_security_logout">logout</a> </dt>
             </sec:authorize>
-        </ul>
+        </dl>
     </nav>
 
     <jsp:invoke fragment="yield"/>

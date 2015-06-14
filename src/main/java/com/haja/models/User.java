@@ -18,7 +18,6 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //TODO
     @Basic
     private String role = "ROLE_USER";
 
@@ -50,24 +49,13 @@ public class User implements Serializable {
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date birthDate;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date registrationDate = new Date();
-
-    @OneToMany(mappedBy = "user")
-    private List<Order> orders;
-
-
-
-    /*
-    *
-    * AVATAR
-    *
-    * */
-
-
 
     public Long getId() {
         return id;
@@ -153,14 +141,5 @@ public class User implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
 
 }

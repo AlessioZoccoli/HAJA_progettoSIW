@@ -32,10 +32,6 @@
                 <td>${product.name}</td>
                 <td>${product.description}</td>
                 <td>&euro; ${product.price}</td>
-                  ${product.quantity>0 ? "disponibile" : "al momento non è disponibile"}
-                <td>
-                  <form action="/administrator/product/delete/${product.id}" method="post"><input type="submit" value="Rimuovi"/></form>
-                </td>
               </tr>
             </c:forEach>
             </tbody>

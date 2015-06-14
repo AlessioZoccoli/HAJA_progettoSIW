@@ -1,6 +1,7 @@
 package com.haja.models;
 
-import javax.inject.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -20,20 +21,25 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    /*nullable true per testare?*/
     @ManyToOne
     private User user;
 
     @Basic
-    @Temporal(TemporalType.TIME)
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date creationDate;
 
     @Basic
-    @Temporal(TemporalType.TIME)
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date closingDate;
 
     @Basic
-    @Temporal(TemporalType.TIME)
+    @Column(nullable = false)
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern="dd/MM/yyyy")
     private Date evasionDate;
 
     @OneToMany(cascade=CascadeType.ALL)

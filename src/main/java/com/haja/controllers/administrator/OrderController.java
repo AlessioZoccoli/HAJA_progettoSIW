@@ -18,10 +18,9 @@ import java.util.Collection;
  */
 
 @Controller
-@RequestMapping
+@RequestMapping(value = "/administrator/orders")
 public class OrderController {
 
-    /*
     @Autowired
     private OrderRepository orderRepository;
 
@@ -29,7 +28,7 @@ public class OrderController {
     public String listUsers(ModelMap model) {
         model.addAttribute("order", new Order());
         model.addAttribute("orders",orderRepository.findAll());
-        return "userViews/index";
+        return "orderViews/index";
     }
-    */
+
 }

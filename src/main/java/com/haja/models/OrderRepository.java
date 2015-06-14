@@ -7,4 +7,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Project: HAJA_progettoSIW
  * Package: com.haja.models
  */
-public interface OrderRepository extends JpaRepository{}
+public interface OrderRepository extends JpaRepository<Order,Long>{}
