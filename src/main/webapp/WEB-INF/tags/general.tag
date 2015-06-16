@@ -23,30 +23,18 @@
     <nav id="main-nav">
         <dl>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
-<<<<<<< HEAD
                 <dt><a href="/">HAJA</a></dt>
                 <dt><a href="/administrator/supplier">Fornitori</a></dt>
                 <dt><a href="/administrator/user">Utenti</a></dt>
                 <dt><a href="/administrator/orders">Ordini </a></dt>
                 <dt><a href="/administrator/product">Gestione Catalogo Prodotti</a></dt>
-=======
->>>>>>> 47efa2dc6182f569ff2bd376c550b397a04c9bd4
-
-                <dt><a href="/">HAJA</a></dt>
-                <dt><a href="/administrator/supplier">Fornitori</a></dt>
-                <dt><a href="/administrator/user">Utenti</a></dt>
-                <dt><a href="/administrator/orders">Ordini </a></dt>
-                <dt><a href="/administrator/product">Prodotti</a></dt>
             </sec:authorize>
-<<<<<<< HEAD
-=======
+
 
             <sec:authorize access="hasRole('ROLE_USER')">
-
-                <dt><a href="/cart"> Carrello </a></dt>
+                <dt><a href="/cart/init">Nuovo Carrello - inizializzami</dt>
             </sec:authorize>
 
->>>>>>> 47efa2dc6182f569ff2bd376c550b397a04c9bd4
         </dl>
     </nav>
 
@@ -66,5 +54,80 @@
 
     <jsp:invoke fragment="yield"/>
     <jsp:invoke fragment="footer"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        function add() {
+            $(".acquista").on('click', function() {
+
+                var cart = JSON.parse(localStorage.getItem("cart"));
+
+                if (cart === null) {
+                    cart = {};
+                }
+
+                if(cart[$(this).data("id")] !== undefined) {
+                    if(cart[$(this).data("id")].quantity >= $(this).data("quantity")) {
+                        alert("Non abbiamo abbastanza "+$(this).data("name")+" in magazzino.");
+                    } else {
+                        alert("Hai aggiunto un altro "+$(this).data("name"));
+                        cart[$(this).data("id")].quantity++;
+                    }
+                } else {
+                    alert("Hai aggiunto il prodotto nel carrello!");
+                    cart[$(this).data("id")] = {
+                        id: $(this).data("id"),
+                        name: $(this).data("name"),
+                        description: $(this).data("description"),
+                        price: $(this).data("price"),
+                        quantity: 1
+                    };
+                }
+
+                cart = JSON.stringify(cart);
+
+                localStorage.setItem("cart", cart);
+
+            });
+        }
+
+
+        function svuotaCarrello() {
+            localStorage.removeItem("cart");
+        }
+
+        $("#confermaOrdine").on("click", function() {
+            var json = {
+                creationDate: new Date(),
+                orderLines: []
+            };
+
+            var cart = JSON.parse(localStorage.getItem("cart"));
+            for(product in cart) {
+                json.orderLines.push({
+                    product: {id: cart[product].id},
+                    quantity: cart[product].quantity,
+                    price: cart[product].price
+                });
+            }
+            localStorage.setItem("json", JSON.stringify(json));
+            $.ajax({
+                type: "POST",
+                url: "/customer/cart",
+                data: {json: localStorage.getItem("json")},
+                success: function() {
+                    svuotaCarrello();
+                    localStorage.removeItem("json");
+                    alert("Ordine confermato correttamente.");
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            add();
+            $("#svuotaCarrello").on("click", function() {
+                svuotaCarrello();
+            });
+        });
+    </script>
 </body>
 </html>

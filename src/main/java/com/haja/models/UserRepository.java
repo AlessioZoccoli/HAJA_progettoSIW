@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
         // Posso usare tutte le operazioni fornite da JpaRepository nel controller dell'utente
+
+    User findByNickname(String name);
 }

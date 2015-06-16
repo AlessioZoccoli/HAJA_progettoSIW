@@ -23,17 +23,18 @@ public class Product implements Serializable {
     private String description;
 
     @Basic
-    @Min(value = 0)                 //da rivedere
+    @Min(value = 0)
     @NotNull(message = "campo necessario")
-    @Column(unique = true)
     private Double price;
 
     @Basic
     @NotNull(message = "campo necessario")
     private Integer quantity;
 
+    /*
     @ManyToMany(mappedBy = "products", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Supplier> suppliers;
+    */
 
     public Long getId() {
         return id;
@@ -75,6 +76,7 @@ public class Product implements Serializable {
         this.quantity = quantity;
     }
 
+    /*
     public List<Supplier> getSuppliers() {
         return suppliers;
     }
@@ -82,5 +84,21 @@ public class Product implements Serializable {
     public void setSuppliers(List<Supplier> suppliers) {
         this.suppliers = suppliers;
     }
+    */
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
+    }
+
+    public void decr(Integer quantity) {
+        this.quantity -= quantity;
+
+    }
 }

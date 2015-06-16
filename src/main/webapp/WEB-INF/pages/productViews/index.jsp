@@ -27,6 +27,7 @@
               <th>Nome</th>
               <th>Descrizione Prodotto</th>
               <th>Prezzo</th>
+              <th>Acquista</th>
             </tr>
             </thead>
             <tbody>
@@ -35,15 +36,19 @@
                 <td>${product.name}</td>
                 <td>${product.description}</td>
                 <td>&euro; ${product.price}</td>
-
                 <td>
-                  <form action="/administrator/product/delete/${product.id}" method="post"><input type="submit" value="Rimuovi"/></form>
+                  <p
+                          data-name="${product.name}"
+                          data-description="${product.description}"
+                          data-price="${product.price}"
+                          data-quantity="${product.quantity}"
+                          data-id="${product.id}" title="acquista ora" class="acquista btn">Acquista ora</p>
                 </td>
-
               </tr>
             </c:forEach>
             </tbody>
           </table>
+          <h1 id="confermaOrdine">Conferma ordine</h1>
         </c:if>
 
     </jsp:attribute>

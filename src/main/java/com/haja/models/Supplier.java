@@ -35,8 +35,10 @@ public class Supplier implements Serializable {
         @Basic
         private String phone;
 
+        /*
         @ManyToMany
         private List<Product> products;
+        */
 
         public Long getId() {
                 return id;
@@ -78,6 +80,7 @@ public class Supplier implements Serializable {
                 this.phone = phone;
         }
 
+        /*
         public List<Product> getProducts() {
                 return products;
         }
@@ -85,6 +88,7 @@ public class Supplier implements Serializable {
         public void setProducts(List<Product> products) {
                 this.products = products;
         }
+        */
 
 
 }

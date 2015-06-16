@@ -10,49 +10,47 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<<<<<<< HEAD
+
 
 <t:general>
   <jsp:attribute name="title">Catalogo Prodotti</jsp:attribute>
   <jsp:attribute name="yield">
-        <html>
-        <head>
-          <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-          <title>ORDINI</title>
-        </head>
-        <body>
+
+      <h1>ordini</h1>
 
         <c:if test="${!empty orders}">
-          <h3>Ordini</h3>
-          <table>
+          <table id="test">
             <thead>
             <tr>
-              <th>IdOrdine</th>
-              <th>creazione</th>
-              <th>chiusura</th>
-              <th>evasione</th>
-              <th>IdUtente</th>
+              <th>Cliente</th>
+              <th>Creazione</th>
+              <th>Chiusura</th>
+              <th>Evasione</th>
+              <th>Cancella</th>
+              <th>Evadi</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${orders}" var="order">
               <tr>
-                <td>${order.id}</td>
+                <td>${order.user.firstName} ${order.user.lastName}, ${order.user.email}, ${order.user.address}</td>
                 <td>${order.creationDate}</td>
                 <td>${order.closingDate}</td>
                 <td>${order.evasionDate}</td>
-                <td>${order.user.id}</td>
+                <td>
+                  <form action="/administrator/orders/delete/${order.id}" method="post"><input type="submit" value="Rimuovi"/></form>
+                </td>
+                <td>
+                  <form action="/administrator/orders/evadi/${order.id}" method="post"><input type="submit" value="Evadi ordine"/></form>
+                </td>
               </tr>
             </c:forEach>
             </tbody>
           </table>
         </c:if>
 
-        </body>
-        </html>
-
-
     </jsp:attribute>
+
 
 </t:general>
 

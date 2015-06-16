@@ -18,7 +18,7 @@ public class OrderLine implements Serializable {
     private Long id;
 
     /*In realtà il prodotto dovrebbe essere noto al db prima della riga ordine (v. PERSIST)*/
-    @OneToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @OneToOne
     private Product product;
 
     /*del prodotto*/
@@ -62,10 +62,9 @@ public class OrderLine implements Serializable {
         this.product = product;
     }
 
-    private Double CalculateLinePrice(){
+    private Double subTotal(){
         Double lprice = (this.price)*(this.quantity);
         return lprice;
     }
-
 
 }

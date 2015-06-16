@@ -1,17 +1,14 @@
 package com.haja.models;
 
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
-@Entity
+@NamedQuery(name = "User.findByNickname", query = "SELECT u FROM User u WHERE u.nickname = ?")
+@Entity 
 public class User implements Serializable {
 
 

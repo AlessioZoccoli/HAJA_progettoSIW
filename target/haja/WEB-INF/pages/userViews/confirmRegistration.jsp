@@ -6,24 +6,15 @@
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<<<<<<< HEAD
-=======
-
-<t:general>
->>>>>>> 47efa2dc6182f569ff2bd376c550b397a04c9bd4
 
 <t:general>
 
-<<<<<<< HEAD
+
     <jsp:attribute name="title">login</jsp:attribute>
     <jsp:attribute name="yield">
         <body>Registrazione Effettuata con <strong>successo</strong></body>
         <a href="/">Torna alla Home</a>
-=======
-    <jsp:attribute name="title">dati registrazione</jsp:attribute>
 
-
-    <jsp:attribute name="yield">
         <h3>I tuoti dati</h3>
             <tr>
                 <th><strong>Nome:</strong>
@@ -46,7 +37,7 @@
                 </th>
             </tr>
 
->>>>>>> 47efa2dc6182f569ff2bd376c550b397a04c9bd4
+
     </jsp:attribute>
 
 </t:general>
