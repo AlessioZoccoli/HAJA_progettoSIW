@@ -3,52 +3,55 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
 <t:general>
-
-
     <jsp:attribute name="title">signup</jsp:attribute>
-
-
     <jsp:attribute name="yield">
 
-        <h1>Registrati</h1>
+        <head>
+            <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="../../../bootstrap/css/business-casual.css" rel="stylesheet" type="text/css">
+        </head>
 
-        <form:form id="form-data" method="post" action="/signup" modelAttribute="user">
+        <div class="row">
+             <div class="box">
+                 <div class="col-lg-12">
+                        <h1>Registrati</h1>
 
-            <form:label path="nickname">Nickname:</form:label>
-            <form:input path="nickname"/>
+                        <form:form id="form-data" method="post" action="/signup" modelAttribute="user">
 
-            <form:label path="firstName">Nome:</form:label>
-            <form:input path="firstName"/>
+                            <form:label path="nickname">Nickname:</form:label>
+                            <form:input path="nickname"/>
 
-            <form:label path="lastName">Cognome:</form:label>
-            <form:input path="lastName"/>
+                            <form:label path="firstName">Nome:</form:label>
+                            <form:input path="firstName"/>
 
-            <form:label path="email">Email:</form:label>
-            <form:input path="email"/>
+                            <form:label path="lastName">Cognome:</form:label>
+                            <form:input path="lastName"/>
 
-            <form:label path="password">Password</form:label>
-            <form:input type="password" path="password"/>
+                            <form:label path="email">Email:</form:label>
+                            <form:input path="email"/>
 
-            <form:label path="address.city">Citt&#224:</form:label>
-            <form:input path="address.city"/>
+                            <form:label path="password">Password</form:label>
+                            <form:input type="password" path="password"/>
 
-            <form:label path="address.cap">Cap:</form:label>
-            <form:input path="address.cap"/>
+                            <form:label path="address.city">Citt&#224:</form:label>
+                            <form:input path="address.city"/>
 
-            <form:label path="address.address_line">Indirizzo:</form:label>
-            <form:input path="address.address_line"/>
+                            <form:label path="address.cap">Cap:</form:label>
+                            <form:input path="address.cap"/>
 
-            <form:label path="birthDate">Data di nascita: (dd/MM/yyyy)</form:label>
-            <form:input path="birthDate"/>
+                            <form:label path="address.address_line">Indirizzo:</form:label>
+                            <form:input path="address.address_line"/>
 
-            <input type="submit" value="registrati">
+                            <form:label path="birthDate">Data di nascita: (dd/MM/yyyy)</form:label>
+                            <form:input path="birthDate"/>
 
-        </form:form>
+                            <input type="submit" value="registrati">
+
+                        </form:form>
+                 </div>
+             </div>
+        </div>
 
     </jsp:attribute>
 

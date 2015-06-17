@@ -2,18 +2,14 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
-<head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-
 <t:general>
-
-
     <jsp:attribute name="title">login</jsp:attribute>
-
-
     <jsp:attribute name="yield">
+
+        <head>
+            <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="../../../bootstrap/css/business-casual.css" rel="stylesheet" type="text/css">
+        </head>
 
         <h1>Effettua il login</h1>
 

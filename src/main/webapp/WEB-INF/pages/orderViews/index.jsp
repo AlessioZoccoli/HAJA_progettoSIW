@@ -13,41 +13,59 @@
 
 
 <t:general>
-  <jsp:attribute name="title">Catalogo Prodotti</jsp:attribute>
+  <jsp:attribute name="title">Ordini</jsp:attribute>
   <jsp:attribute name="yield">
+    
+     <head>
+       <link href="../../../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+       <link href="../../../bootstrap/css/business-casual.css" rel="stylesheet" type="text/css">
+     </head>
 
-      <h1>ordini</h1>
+       <div class="row">
+         <div class="box">
+           <div class="col-lg-12">
+             <title>ORDINI</title>
 
-        <c:if test="${!empty orders}">
-          <table id="test">
-            <thead>
-            <tr>
-              <th>Cliente</th>
-              <th>Creazione</th>
-              <th>Chiusura</th>
-              <th>Evasione</th>
-              <th>Cancella</th>
-              <th>Evadi</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${orders}" var="order">
-              <tr>
-                <td>${order.user.firstName} ${order.user.lastName}, ${order.user.email}, ${order.user.address}</td>
-                <td>${order.creationDate}</td>
-                <td>${order.closingDate}</td>
-                <td>${order.evasionDate}</td>
-                <td>
-                  <form action="/administrator/orders/delete/${order.id}" method="post"><input type="submit" value="Rimuovi"/></form>
-                </td>
-                <td>
-                  <form action="/administrator/orders/evadi/${order.id}" method="post"><input type="submit" value="Evadi ordine"/></form>
-                </td>
-              </tr>
-            </c:forEach>
-            </tbody>
-          </table>
-        </c:if>
+             <body>
+
+
+             <c:if test="${!empty orders}">
+               <h3>Ordini</h3>
+               <table class="table table-bordered table-striped"> <!--intabellamento-->
+                 <thead>
+                 <tr>
+                   <th>ID ordine</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <c:forEach items="${orders}" var="order">
+                   <tr>
+                     <td>${order.id} </td>
+                   </tr>
+                 </c:forEach>
+                 </tbody>
+               </table>
+             </c:if>
+             <sec:authorize access="isAuthenticated()">
+               <sec:authorize access="hasRole('ROLE_USER')">
+                 <div class="widget">
+                   <h3>Il tuo carrello ${sessionScope['scopedTarget.currentOrder'].id}</h3>
+                   <ul id="currentCart">
+                   </ul>
+                   <div class="total" id="totalCart"></div>
+                   <a id="confermaOrdine" class="btn" href="#">Conferma ordine <i class="fa fa-shopping-cart"></i></a><br/>
+                   <a id="svuotaCarrello" class="btn" href="#">Annulla ordine <i class="fa fa-trash"></i></a>
+                 </div>
+               </sec:authorize>
+             </sec:authorize>
+             </body>
+           </div>
+         </div>
+       </div>
+     </head>
+
+     </html>
+
 
     </jsp:attribute>
 

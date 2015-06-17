@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.6.24)
 # Database: haja
-# Generation Time: 2015-06-14 14:17:57 +0000
+# Generation Time: 2015-06-16 18:09:57 +0000
 # ************************************************************
 
 
@@ -38,7 +38,8 @@ LOCK TABLES `Address` WRITE;
 
 INSERT INTO `Address` (`id`, `address_line`, `cap`, `city`)
 VALUES
-	(1,'Via delle Baleari','00122','Roma');
+	(1,'Via delle Vie 14','00120','Roma'),
+	(2,'Viale Roma 34','21030','Milano');
 
 /*!40000 ALTER TABLE `Address` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -67,8 +68,9 @@ LOCK TABLES `OrderLine` WRITE;
 
 INSERT INTO `OrderLine` (`id`, `price`, `quantity`, `product_id`, `orders_id`)
 VALUES
-	(1,1.2,3,1,1),
-	(2,1.2,2,2,1);
+	(4,0.4,2,1,2),
+	(5,0.6,2,2,2),
+	(6,0.4,1,3,2);
 
 /*!40000 ALTER TABLE `OrderLine` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -81,9 +83,10 @@ DROP TABLE IF EXISTS `orders`;
 
 CREATE TABLE `orders` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `closingDate` datetime DEFAULT NULL,
-  `creationDate` datetime DEFAULT NULL,
-  `evasionDate` datetime DEFAULT NULL,
+  `closingDate` date NOT NULL,
+  `creationDate` date NOT NULL,
+  `evasionDate` date DEFAULT NULL,
+  `state` varchar(255) DEFAULT NULL,
   `user_id` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKC3DF62E52EF992CD` (`user_id`),
@@ -93,9 +96,9 @@ CREATE TABLE `orders` (
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
 
-INSERT INTO `orders` (`id`, `closingDate`, `creationDate`, `evasionDate`, `user_id`)
+INSERT INTO `orders` (`id`, `closingDate`, `creationDate`, `evasionDate`, `state`, `user_id`)
 VALUES
-	(1,'2015-06-02 00:00:00','2015-06-02 00:00:00','2015-06-02 00:00:00',1);
+	(2,'2015-06-16','2015-06-16','2015-06-16','active',2);
 
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -113,8 +116,7 @@ CREATE TABLE `Product` (
   `price` double NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name` (`name`),
-  UNIQUE KEY `price` (`price`)
+  UNIQUE KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `Product` WRITE;
@@ -122,10 +124,10 @@ LOCK TABLES `Product` WRITE;
 
 INSERT INTO `Product` (`id`, `description`, `name`, `price`, `quantity`)
 VALUES
-	(1,'Cialda nera di caffè Ristretto','Ristretto',0.4,1000),
-	(2,'Cialda oro di caffè Dulsao. Dal Brasile.','Dulsao',0.6,150),
-	(3,'Cialda rossa di caffè decaffeinato','Decaffeinato',0.5,956),
-	(4,'Zucchero di canna bio. Proveniente dal Guatemala','Zucchero di canna',6,48);
+	(1,'Cialda di caffè Ristretto','Ristretto',0.4,10098),
+	(2,'Cialda di caffè Dulsao','Dulsao',0.6,242),
+	(3,'Cialda di caffè Decaffeinato','Decaffeinato',0.4,1999),
+	(4,'Zucchero di canna Bio. Proveniente dal Perù','Zucchero di canna',6,79);
 
 /*!40000 ALTER TABLE `Product` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -151,40 +153,10 @@ LOCK TABLES `Supplier` WRITE;
 
 INSERT INTO `Supplier` (`id`, `email`, `iva`, `name`, `phone`)
 VALUES
-	(1,'nespressione@info.com','123456789789','Nespressione','067682341'),
-	(2,'caffettao@info.com','67512567779','Caffettao','066612771');
+	(1,'nespressione@info.it','45786543456789','Nespressione s.p.a','025614564'),
+	(2,'caffeenonsolo@info.it','75825358536439','Caffe&NonSolo s.r.l',NULL);
 
 /*!40000 ALTER TABLE `Supplier` ENABLE KEYS */;
-UNLOCK TABLES;
-
-
-# Dump of table Supplier_Product
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `Supplier_Product`;
-
-CREATE TABLE `Supplier_Product` (
-  `suppliers_id` bigint(20) NOT NULL,
-  `products_id` bigint(20) NOT NULL,
-  KEY `FKF375BD7CAFDF00F2` (`products_id`),
-  KEY `FKF375BD7C5ECFED72` (`suppliers_id`),
-  CONSTRAINT `FKF375BD7C5ECFED72` FOREIGN KEY (`suppliers_id`) REFERENCES `Supplier` (`id`),
-  CONSTRAINT `FKF375BD7CAFDF00F2` FOREIGN KEY (`products_id`) REFERENCES `Product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-LOCK TABLES `Supplier_Product` WRITE;
-/*!40000 ALTER TABLE `Supplier_Product` DISABLE KEYS */;
-
-INSERT INTO `Supplier_Product` (`suppliers_id`, `products_id`)
-VALUES
-	(1,1),
-	(1,2),
-	(1,3),
-	(1,4),
-	(2,2),
-	(2,3);
-
-/*!40000 ALTER TABLE `Supplier_Product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -217,7 +189,8 @@ LOCK TABLES `User` WRITE;
 
 INSERT INTO `User` (`id`, `birthDate`, `email`, `firstName`, `lastName`, `nickname`, `password`, `registrationDate`, `role`, `address_id`)
 VALUES
-	(1,'1993-09-25','ale@gmail.com','Alessio','Zoccoli','ale','pass','2015-09-25','ROLE_ADMIN',1);
+	(1,'1993-11-11','admin@haja.com','admin','admin','admin','admin','2015-04-01','ROLE_ADMIN',1),
+	(2,'1993-09-11','john@gmail.com','John','Red','johnny','password','2015-11-11','ROLE_USER',2);
 
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;

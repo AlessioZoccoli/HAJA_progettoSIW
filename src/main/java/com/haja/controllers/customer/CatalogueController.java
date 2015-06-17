@@ -38,13 +38,13 @@ public class CatalogueController {
     @RequestMapping(method = RequestMethod.GET)
     public String listProduct(ModelMap model) {
         model.addAttribute("products", productRepository.findAvailableProducts()); //namedQuery in Product
-        return "productViews/index";
+        //return "productViews/index";
+        return "homePage";
     }
 
     @RequestMapping(value="customer/cart", method=RequestMethod.POST)
     public @ResponseBody
-    String addOrder(HttpServletRequest request,
-                                         @RequestParam(value="json", required=false) String json)
+    String addOrder(HttpServletRequest request, @RequestParam(value="json", required=false) String json)
             throws IOException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User u = userRepository.findByNickname(auth.getName());
@@ -54,6 +54,6 @@ public class CatalogueController {
         order.setClosingDate(new Date());
         order.setUser(u);
         orderRepository.save(order);
-        return "";
+        return "W Haja";
     }
 }

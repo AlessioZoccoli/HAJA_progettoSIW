@@ -47,6 +47,7 @@ public class Order implements Serializable {
     private Date evasionDate;
 
     @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    @JoinColumn(name = "orders_id")
     private List<OrderLine> orderLines;
 
 
