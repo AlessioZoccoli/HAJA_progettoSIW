@@ -55,44 +55,56 @@
       <div class="box">
       <div class="col-lg-12">
 
-
       <c:if test="${!empty products}">
         <h3>Catalogo Prodotti</h3>
         <table>
           <thead>
           <tr>
-            <th>Nome</th>
-            <th>Descrizione Prodotto</th>
-            <th>Prezzo</th>
-            <th>Disponibilit&agrave</th>
+            <th>&nbsp&nbspNome&nbsp&nbsp</th>
+            <th>&nbsp&nbspDescrizione Prodotto&nbsp&nbsp</th>
+            <th>&nbsp&nbspPrezzo&nbsp&nbsp</th>
+            <th>&nbsp&nbspDisponibilit&agrave&nbsp&nbsp</th>
           </tr>
           </thead>
           <tbody>
+
           <c:forEach items="${products}" var="product">
             <tr>
-              <td>${product.name}</td>
-              <td>${product.description}</td>
-              <td>&euro; ${product.price}</td>
-              <td>${product.quantity}</td>
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
+              <td>${product.name}&nbsp&nbsp</td>
+              <td>&nbsp&nbsp${product.description}&nbsp&nbsp</td>
+              <td>&nbsp&nbsp&euro; ${product.price}&nbsp&nbsp</td>
+              <td>&nbsp&nbsp${product.quantity}&nbsp&nbsp</td>
+
                 <td>
-                    <form action="/administrator/product/delete/${product.id}" method="post"><input type="submit" value="Rimuovi"/></form>
+                    <p>
+                        <sec:authorize access="hasRole('ROLE_ADMIN')">
+                        <form action="/administrator/product/delete/${product.id}" method="post">
+                        <input type="submit" value="Rimuovi"/></form>
+                        </sec:authorize>
+                     </p>
                 </td>
-                </sec:authorize>
+
+
                 <td>
                     <p
                             data-name="${product.name}"
                             data-description="${product.description}"
                             data-price="${product.price}"
                             data-quantity="${product.quantity}"
-                            data-id="${product.id}" title="acquista ora" class="acquista btn">Acquista ora</p>
+                            data-id="${product.id}"
+
+                            <sec:authorize access="hasRole('ROLE_USER')">
+                            title="acquista ora" class="acquista btn" <input type="submit" value="Acquista ora"/>
+                            </sec:authorize>
+                    </p>
                 </td>
 
             </tr>
           </c:forEach>
           </tbody>
           </table>
-          <h1 id="confermaOrdine">Conferma ordine</h1>
+          <sec:authorize access="hasRole('ROLE_USER')"><h1 id="confermaOrdine">Conferma ordine</h1></sec:authorize>
+
         </c:if>
         </div>
         </div>

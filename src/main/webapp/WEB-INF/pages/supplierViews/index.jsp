@@ -2,6 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <t:general>
@@ -13,6 +14,7 @@
         <link href="../../../bootstrap/css/business-casual.css" rel="stylesheet" type="text/css">
     </head>
 
+        <sec:authorize access = "hasRole('ROLE_ADMIN')">
       <div class="row">
              <div class="box">
                  <div class="col-lg-12">
@@ -38,6 +40,8 @@
                 </div>
             </div>
         </div>
+        </sec:authorize>
+
 
         <div class="row">
             <div class="box">
@@ -47,10 +51,10 @@
                           <table class="table table-bordered table-striped"> <!--intabellamento-->
                               <thead>
                               <tr>
-                                  <th>Fornitore</th>
-                                  <th>Iva</th>
-                                  <th>Email</th>
-                                  <th>Numero di telefono</th>
+                                  <th>&nbsp&nbspFornitore&nbsp&nbsp</th>
+                                  <th>&nbsp&nbspIva&nbsp&nbsp</th>
+                                  <th>&nbsp&nbspEmail&nbsp&nbsp</th>
+                                  <th>&nbsp&nbspNumero di telefono&nbsp&nbsp</th>
                                   <th>&nbsp;</th>
                               </tr>
                               </thead>
@@ -62,8 +66,11 @@
                                       <td>${supplier.email}</td>
                                       <td>${supplier.phone}</td>
 
+
                                       <td>
+                                          <sec:authorize access = "hasRole('ROLE_ADMIN')">
                                           <form action="/administrator/supplier/delete/${supplier.id}" method="post"><input type="submit" class="btn btn-danger btn-mini" value="Rimuovi"/></form>
+                                          </sec:authorize>
                                       </td>
                                   </tr>
                               </c:forEach>

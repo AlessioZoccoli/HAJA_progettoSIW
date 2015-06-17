@@ -58,23 +58,20 @@
 
                         <dl class="nav navbar-nav">
 
+                            <dt><a href="/">HAJA</a></dt>
+                            <dt><a href="/administrator/supplier">Fornitori</a></dt>
+
+                            <dt><a href="/administrator/product">Prodotti</a></dt>
+
+
                             <sec:authorize access="hasRole('ROLE_ADMIN')">
-                                <dt><a href="/">HAJA</a></dt>
-                                <dt><a href="/administrator/supplier">Fornitori</a></dt>
                                 <dt><a href="/administrator/user">Utenti</a></dt>
                                 <dt><a href="/administrator/orders">Ordini </a></dt>
-                                <dt><a href="/administrator/product">Gestione Catalogo Prodotti</a></dt>
                             </sec:authorize>
 
                             <sec:authorize access="isAnonymous()">
                                 <dt><a title="registrati" href="/signup">registrati</a></dt>
                                 <dt><a title="login" href="/login">login</a></dt>
-                            </sec:authorize>
-
-
-                            <!-- is authenticated ?-->
-                            <sec:authorize access="hasRole('ROLE_USER')">
-                                <dt><a href="/administrator/product">Catalogo Prodotti</a></dt>
                             </sec:authorize>
 
                             <sec:authorize access="isAuthenticated()">
@@ -88,8 +85,12 @@
             </nav>
         </nav>
 
+        <script src="../../bootstrap/js/jquery.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+
         <jsp:invoke fragment="yield"/>
         <jsp:invoke fragment="footer"/>
+
         <!-- json e jQuery per usare il carrello-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script type="text/javascript">

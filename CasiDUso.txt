@@ -1,0 +1,67 @@
+Caso d'uso UC1: consulta listino
+Attore primario: utente non registrato
+Scenario principale di successo:
+
+	1) L'utente consulta il catalogo dei prodotti nella home page del sito
+	2) L'utente sceglie un prodotto e ne richiede i dettagli cliccando sull'immagine
+	3) Il sistema mostra i dettagli del prodotto scelto
+        
+
+
+Caso d'uso UC2: effettua ordine
+Attore primario: cliente (utente registrato)
+Scenario principale di successo:
+
+	1)Il cliente crea un ordine cliccando sul bottone acquista di un prodotto
+	2)Il cliente consulta il catalogo dei prodotti
+	3)Il cliente sceglie un prodotto e lo aggiunge nel carrello cliccando sul bottone acquista. Se ne deve acquista N, cliccherà N volte sul bottone acquista.
+	4)Il sistema imposta il prezzo unitario del prodotto scelto al prezzo corrente di listino
+	5)Il cliente ripete i due passi precedenti finché necessario
+	6)Il cliente "chiude" l'ordine
+	7)Il sistema registra l'ordine e tutte le righe d'ordine associate
+
+
+Caso d'uso UC3: consulta i propri ordini
+Attore primario: cliente
+Scenario principale:
+	1)Il cliente consulta l'elenco dei propri ordini
+	2)Il sistema mostra al cliente l'elenco dei suoi ordini
+	3)Il cliente chiede il dettaglio di un ordine
+	4)Il sistema mostra il dettaglio dell'ordine
+	5)Il cliente ripete i due passi precedenti finché necessario
+
+
+Caso d'uso UC4: inserimento prodotti nel catalogo
+Attore primario: amministrazione
+Scenario principale:
+	1)L'amministratore inserisce un nuovo prodotto nel catalogo specificandone i dettagli
+	2)Il sistema registra il prodotto
+	3)I punti precedenti vengono ripetuti fino a che necessario
+
+Caso d'uso UC5: recupera indirizzo cliente
+Attore primario: amministrazione
+Scenario principale:
+	1)L’amministratore fornisce l'id di un ordine
+	2)Il sistema mostra all’amministratore i dati del cliente che ha effettuato l’ordine
+
+
+Caso d'uso UC6: evasione ordine
+Attore primario: amministrazione
+Scenario principale:
+	1)Il sistema presenta all'amministratore gli ordini chiusi, ma non evasi
+	2)L'amministratore sceglie un ordine
+        3)Il sistema evade l'ordine: aggiorna l'ordine inserendo la data di spedizione e aggiorna la quantità dei prodotti in magazzino (sottraendo la quantità di prodotti usati per l'ordine)
+
+
+Caso d'uso UC7: consulta listino fornitori
+Attore primario: utente non registrato
+Scenario principale:
+      1) l'utente può accedere al listino dei fornitori
+      2) Il sistema mostra la lista dei fornitori  
+	
+Caso d'uso UC8 : segnalazioni
+Attore primario: utente 
+Scenario principale:
+ 1) il sistema fornisce indirizzi mail e pagine facebook degli amministratori
+ 2) l'utente può segnalare problemi, indicazioni, e consigli agli amministratori
+
