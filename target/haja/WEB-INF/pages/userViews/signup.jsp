@@ -19,31 +19,31 @@
 
                         <form:form id="form-data" method="post" action="/signup" modelAttribute="user">
 
-                            <form:label path="nickname">Nickname:</form:label>
+                            <form:label path="nickname">Nickname:&nbsp&nbsp</form:label>
                             <form:input path="nickname"/>
 
-                            <form:label path="firstName">Nome:</form:label>
+                            <form:label path="firstName">Nome:&nbsp&nbsp</form:label>
                             <form:input path="firstName"/>
 
-                            <form:label path="lastName">Cognome:</form:label>
+                            <form:label path="lastName">Cognome:&nbsp&nbsp</form:label>
                             <form:input path="lastName"/>
 
-                            <form:label path="email">Email:</form:label>
+                            <form:label path="email">Email:&nbsp&nbsp</form:label>
                             <form:input path="email"/>
 
-                            <form:label path="password">Password</form:label>
+                            <form:label path="password">Password:&nbsp&nbsp</form:label>
                             <form:input type="password" path="password"/>
 
-                            <form:label path="address.city">Citt&#224:</form:label>
+                            <form:label path="address.city">Citt&#224:&nbsp&nbsp</form:label>
                             <form:input path="address.city"/>
 
-                            <form:label path="address.cap">Cap:</form:label>
+                            <form:label path="address.cap">Cap:&nbsp&nbsp</form:label>
                             <form:input path="address.cap"/>
 
-                            <form:label path="address.address_line">Indirizzo:</form:label>
+                            <form:label path="address.address_line">Indirizzo:&nbsp&nbsp</form:label>
                             <form:input path="address.address_line"/>
 
-                            <form:label path="birthDate">Data di nascita: (dd/MM/yyyy)</form:label>
+                            <form:label path="birthDate">Data di nascita: (dd/MM/yyyy)&nbsp&nbsp</form:label>
                             <form:input path="birthDate"/>
 
                             <input type="submit" value="registrati">

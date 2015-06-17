@@ -5,7 +5,7 @@ Scenario principale di successo:
 	1) L'utente consulta il catalogo dei prodotti nella home page del sito
 	2) L'utente sceglie un prodotto e ne richiede i dettagli cliccando sull'immagine
 	3) Il sistema mostra i dettagli del prodotto scelto
-        
+
 
 
 Caso d'uso UC2: effettua ordine
@@ -57,10 +57,10 @@ Caso d'uso UC7: consulta listino fornitori
 Attore primario: utente non registrato
 Scenario principale:
       1) l'utente può accedere al listino dei fornitori
-      2) Il sistema mostra la lista dei fornitori  
-	
+      2) Il sistema mostra la lista dei fornitori
+
 Caso d'uso UC8 : segnalazioni
-Attore primario: utente 
+Attore primario: utente
 Scenario principale:
  1) il sistema fornisce indirizzi mail e pagine facebook degli amministratori
  2) l'utente può segnalare problemi, indicazioni, e consigli agli amministratori
